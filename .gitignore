@@ -1,4 +1,5 @@
 /firmware/
+*.swp
 
 # Object files
 *.o
