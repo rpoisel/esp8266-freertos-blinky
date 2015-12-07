@@ -1,3 +1,5 @@
+/firmware/
+
 # Object files
 *.o
 *.ko
