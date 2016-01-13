@@ -1,9 +1,3 @@
-add_library(DRIVER_LIB_HDR INTERFACE)
-set_property(TARGET DRIVER_LIB_HDR
-    PROPERTY INTERFACE_INCLUDE_DIRECTORIES
-    ${CMAKE_CURRENT_LIST_DIR}/include
-    )
-
 file(GLOB DRIVER_LIB_SRC
     ${CMAKE_CURRENT_LIST_DIR}/driver/*.c
 )
@@ -12,9 +6,10 @@ add_library(driver_lib STATIC
     ${DRIVER_LIB_SRC}
 )
 
-target_include_directories(driver_lib PRIVATE
-    $<TARGET_PROPERTY:USER_LIB,INTERFACE_INCLUDE_DIRECTORIES>
-    $<TARGET_PROPERTY:DRIVER_LIB_HDR,INTERFACE_INCLUDE_DIRECTORIES>
-    $<TARGET_PROPERTY:ESP8266_SDK,INTERFACE_INCLUDE_DIRECTORIES>
+target_include_directories(driver_lib PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}/include
     )
 
+target_link_libraries(driver_lib PUBLIC
+    user_code
+)

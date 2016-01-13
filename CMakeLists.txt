@@ -6,8 +6,3 @@ add_subdirectory(driver_lib)
 
 add_subdirectory(user)
 
-set_property(TARGET USER_CODE
-    PROPERTY INTERFACE_LINK_LIBRARIES
-    driver_lib
-    user_lib
-)
